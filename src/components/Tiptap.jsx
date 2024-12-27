@@ -1,6 +1,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
+import { Link } from "@tiptap/extension-link";
 
 // All Necessary Extentions.
 const extensions = [StarterKit, Underline, Link];
@@ -16,9 +17,7 @@ const Tiptap = () => {
   // Component renders only when the editor instance is properly initialized.
   if (!editor) return null;
 
-  {
-    /* Function for adding & removing Links */
-  }
+  // Function for adding & removing Links
   const addLink = () => {
     const url = prompt("Enter the URL");
     if (url) {
