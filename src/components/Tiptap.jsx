@@ -52,7 +52,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("bold") ? "bg-gray-300" : ""
             }`}
           >
-            <strong>B</strong>
+            Bold
           </button>
 
           {/* Italic Font */}
@@ -237,8 +237,11 @@ const Tiptap = ({ handleEventContentSave }) => {
       </div>
 
       {/* Editor content */}
-      <div className="bg-gray-50 border p-4 rounded-md min-h-[200px]">
-        <EditorContent editor={editor} />
+      <div className="bg-gray-50 border p-4 rounded-md">
+        <EditorContent
+          editor={editor}
+          className="shadow-md max-h-60 overflow-y-scroll transition-all duration-300"
+        />
       </div>
 
       {/* Save button */}
