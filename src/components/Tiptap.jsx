@@ -1,7 +1,8 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
 
-const extensions = [StarterKit];
+const extensions = [StarterKit, Underline];
 const content = ``;
 
 const Tiptap = () => {
@@ -22,6 +23,7 @@ const Tiptap = () => {
         >
           <strong>B</strong>
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
@@ -29,6 +31,15 @@ const Tiptap = () => {
         >
           Italic
         </button>
+
+        <button
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+          disabled={!editor.can().chain().focus().toggleUnderline().run()}
+          className={editor.isActive("underline") ? "is-active" : ""}
+        >
+          Underline
+        </button>
+
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
@@ -36,6 +47,7 @@ const Tiptap = () => {
         >
           Strike
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleCode().run()}
           disabled={!editor.can().chain().focus().toggleCode().run()}
@@ -43,18 +55,22 @@ const Tiptap = () => {
         >
           Code
         </button>
+
         <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
           Clear marks
         </button>
+
         <button onClick={() => editor.chain().focus().clearNodes().run()}>
           Clear nodes
         </button>
+
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={editor.isActive("paragraph") ? "is-active" : ""}
         >
           Paragraph
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 1 }).run()
@@ -65,6 +81,7 @@ const Tiptap = () => {
         >
           H1
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
@@ -75,6 +92,7 @@ const Tiptap = () => {
         >
           H2
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 3 }).run()
@@ -85,6 +103,7 @@ const Tiptap = () => {
         >
           H3
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 4 }).run()
@@ -95,6 +114,7 @@ const Tiptap = () => {
         >
           H4
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 5 }).run()
@@ -105,6 +125,7 @@ const Tiptap = () => {
         >
           H5
         </button>
+
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 6 }).run()
@@ -115,44 +136,52 @@ const Tiptap = () => {
         >
           H6
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive("bulletList") ? "is-active" : ""}
         >
           Unordered List
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive("orderedList") ? "is-active" : ""}
         >
           Ordered list
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={editor.isActive("codeBlock") ? "is-active" : ""}
         >
           Code block
         </button>
+
         <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive("blockquote") ? "is-active" : ""}
         >
           Blockquote
         </button>
+
         <button
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
         >
           Horizontal rule
         </button>
+
         <button onClick={() => editor.chain().focus().setHardBreak().run()}>
           Hard break
         </button>
+
         <button
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
         >
           Undo
         </button>
+
         <button
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}
