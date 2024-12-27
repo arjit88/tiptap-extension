@@ -8,7 +8,7 @@ const extensions = [StarterKit, Underline, Link];
 const content = ``;
 
 // Using useEditor hook for using the extentions.
-const Tiptap = () => {
+const Tiptap = ({ handleEventContentSave }) => {
   const editor = useEditor({
     extensions,
     content,
@@ -32,6 +32,11 @@ const Tiptap = () => {
 
   const removeLink = () => {
     editor.chain().focus().unsetLink().run();
+  };
+
+  const handleSave = () => {
+    const html = editor.getHTML();
+    handleEventContentSave(html);
   };
 
   return (
@@ -242,7 +247,7 @@ const Tiptap = () => {
         <EditorContent editor={editor} />
       </div>
 
-      <button>Save</button>
+      <button onClick={handleSave}>Save</button>
     </div>
   );
 };
