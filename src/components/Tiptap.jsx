@@ -3,11 +3,11 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { Link } from "@tiptap/extension-link";
 
-// All Necessary Extentions.
+// All Necessary Extensions.
 const extensions = [StarterKit, Underline, Link];
 const content = ``;
 
-// Using useEditor hook for using the extentions.
+// Using useEditor hook for using the extensions.
 const Tiptap = ({ handleEventContentSave }) => {
   const editor = useEditor({
     extensions,
@@ -40,214 +40,216 @@ const Tiptap = ({ handleEventContentSave }) => {
   };
 
   return (
-    <div>
-      <div>
-        {/* Bold Font */}
-        <button
-          onClick={() => editor.chain().focus().toggleBold().run()}
-          disabled={!editor.can().chain().focus().toggleBold().run()}
-          className={editor.isActive("bold") ? "is-active" : ""}
-        >
-          <strong>B</strong>
-        </button>
+    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 mt-8">
+      <div className="mb-4 border-b pb-4">
+        {/* Toolbar with formal button design */}
+        <div className="flex flex-wrap gap-4">
+          {/* Bold Font */}
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            disabled={!editor.can().chain().focus().toggleBold().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("bold") ? "bg-gray-300" : ""
+            }`}
+          >
+            <strong>B</strong>
+          </button>
 
-        {/* Italic Font */}
-        <button
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-          disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={editor.isActive("italic") ? "is-active" : ""}
-        >
-          Italic
-        </button>
+          {/* Italic Font */}
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            disabled={!editor.can().chain().focus().toggleItalic().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("italic") ? "bg-gray-300" : ""
+            }`}
+          >
+            Italic
+          </button>
 
-        {/* Underline button */}
-        <button
-          onClick={() => editor.chain().focus().toggleUnderline().run()}
-          disabled={!editor.can().chain().focus().toggleUnderline().run()}
-          className={editor.isActive("underline") ? "is-active" : ""}
-        >
-          Underline
-        </button>
+          {/* Underline button */}
+          <button
+            onClick={() => editor.chain().focus().toggleUnderline().run()}
+            disabled={!editor.can().chain().focus().toggleUnderline().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("underline") ? "bg-gray-300" : ""
+            }`}
+          >
+            Underline
+          </button>
 
-        {/* Strike button */}
-        <button
-          onClick={() => editor.chain().focus().toggleStrike().run()}
-          disabled={!editor.can().chain().focus().toggleStrike().run()}
-          className={editor.isActive("strike") ? "is-active" : ""}
-        >
-          Strike
-        </button>
+          {/* Strike button */}
+          <button
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+            disabled={!editor.can().chain().focus().toggleStrike().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("strike") ? "bg-gray-300" : ""
+            }`}
+          >
+            Strike
+          </button>
 
-        {/* Code button */}
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={!editor.can().chain().focus().toggleCode().run()}
-          className={editor.isActive("code") ? "is-active" : ""}
-        >
-          Code
-        </button>
+          {/* Code button */}
+          <button
+            onClick={() => editor.chain().focus().toggleCode().run()}
+            disabled={!editor.can().chain().focus().toggleCode().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("code") ? "bg-gray-300" : ""
+            }`}
+          >
+            Code
+          </button>
 
-        {/* Clear Marks button */}
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          Clear marks
-        </button>
+          {/* Clear Marks button */}
+          <button
+            onClick={() => editor.chain().focus().unsetAllMarks().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Clear Marks
+          </button>
 
-        {/*Cn button */}
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
-          Clear nodes
-        </button>
+          {/* Clear Nodes button */}
+          <button
+            onClick={() => editor.chain().focus().clearNodes().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Clear Nodes
+          </button>
 
-        {/* Paragraph button */}
-        <button
-          onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive("paragraph") ? "is-active" : ""}
-        >
-          Paragraph
-        </button>
+          {/* Paragraph button */}
+          <button
+            onClick={() => editor.chain().focus().setParagraph().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("paragraph") ? "bg-gray-300" : ""
+            }`}
+          >
+            Paragraph
+          </button>
 
-        {/* H1 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 1 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 1 }) ? "is-active" : ""
-          }
-        >
-          H1
-        </button>
+          {/* Heading buttons */}
+          {["H1", "H2", "H3", "H4", "H5", "H6"].map((level) => (
+            <button
+              key={level}
+              onClick={() =>
+                editor
+                  .chain()
+                  .focus()
+                  .toggleHeading({ level: parseInt(level.replace("H", "")) })
+                  .run()
+              }
+              className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+                editor.isActive("heading", {
+                  level: parseInt(level.replace("H", "")),
+                })
+                  ? "bg-gray-300"
+                  : ""
+              }`}
+            >
+              {level}
+            </button>
+          ))}
 
-        {/* H2 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 2 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-          }
-        >
-          H2
-        </button>
+          {/* Unordered List button */}
+          <button
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("bulletList") ? "bg-gray-300" : ""
+            }`}
+          >
+            Unordered List
+          </button>
 
-        {/* H3 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 3 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-          }
-        >
-          H3
-        </button>
+          {/* Ordered List button */}
+          <button
+            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("orderedList") ? "bg-gray-300" : ""
+            }`}
+          >
+            Ordered List
+          </button>
 
-        {/* H4 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 4 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 4 }) ? "is-active" : ""
-          }
-        >
-          H4
-        </button>
+          {/* Code Block button */}
+          <button
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("codeBlock") ? "bg-gray-300" : ""
+            }`}
+          >
+            Code Block
+          </button>
 
-        {/* H5 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 5 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 5 }) ? "is-active" : ""
-          }
-        >
-          H5
-        </button>
+          {/* Blockquote button */}
+          <button
+            onClick={() => editor.chain().focus().toggleBlockquote().run()}
+            className={`px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 ${
+              editor.isActive("blockquote") ? "bg-gray-300" : ""
+            }`}
+          >
+            Blockquote
+          </button>
 
-        {/* H6 button */}
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 6 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 6 }) ? "is-active" : ""
-          }
-        >
-          H6
-        </button>
+          {/* Horizontal Rule button */}
+          <button
+            onClick={() => editor.chain().focus().setHorizontalRule().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Horizontal Rule
+          </button>
 
-        {/* Ul button */}
-        <button
-          onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={editor.isActive("bulletList") ? "is-active" : ""}
-        >
-          Unordered List
-        </button>
+          {/* Hard Break button */}
+          <button
+            onClick={() => editor.chain().focus().setHardBreak().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Hard Break
+          </button>
 
-        {/* Ol button */}
-        <button
-          onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={editor.isActive("orderedList") ? "is-active" : ""}
-        >
-          Ordered list
-        </button>
+          {/* Undo & Redo buttons */}
+          <button
+            onClick={() => editor.chain().focus().undo().run()}
+            disabled={!editor.can().chain().focus().undo().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Undo
+          </button>
+          <button
+            onClick={() => editor.chain().focus().redo().run()}
+            disabled={!editor.can().chain().focus().redo().run()}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Redo
+          </button>
 
-        {/* Cb button */}
-        <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive("codeBlock") ? "is-active" : ""}
-        >
-          Code block
-        </button>
-
-        {/* Bq button */}
-        <button
-          onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={editor.isActive("blockquote") ? "is-active" : ""}
-        >
-          Blockquote
-        </button>
-
-        {/* Hr button */}
-        <button
-          onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        >
-          Horizontal rule
-        </button>
-
-        {/* Hard Break button */}
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-          Hard break
-        </button>
-
-        {/* Undo button */}
-        <button
-          onClick={() => editor.chain().focus().undo().run()}
-          disabled={!editor.can().chain().focus().undo().run()}
-        >
-          Undo
-        </button>
-
-        {/* Redo button */}
-        <button
-          onClick={() => editor.chain().focus().redo().run()}
-          disabled={!editor.can().chain().focus().redo().run()}
-        >
-          Redo
-        </button>
-
-        {/* Link buttons */}
-        <button onClick={addLink}>Add Link</button>
-        <button onClick={removeLink}>Remove Link</button>
+          {/* Link buttons */}
+          <button
+            onClick={addLink}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Add Link
+          </button>
+          <button
+            onClick={removeLink}
+            className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+          >
+            Remove Link
+          </button>
+        </div>
       </div>
 
-      {/* Enabeling the editor */}
-      <div>
+      {/* Editor content */}
+      <div className="bg-gray-50 border p-4 rounded-md min-h-[200px]">
         <EditorContent editor={editor} />
       </div>
 
-      <button onClick={handleSave}>Save</button>
+      {/* Save button */}
+      <div className="mt-4 flex justify-center">
+        <button
+          onClick={handleSave}
+          className="px-6 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all duration-200"
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };
