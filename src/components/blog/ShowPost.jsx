@@ -1,7 +1,7 @@
-import React from "react";
+import parse from "html-react-parser";
 
 const ShowPost = ({ htmlContent }) => {
-  return <div>{htmlContent}</div>;
+  return <div>{parse(htmlContent)}</div>;
 };
 
 export default ShowPost;
