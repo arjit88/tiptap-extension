@@ -2,12 +2,25 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { Link } from "@tiptap/extension-link";
+import {
+  FaBold,
+  FaItalic,
+  FaUnderline,
+  FaStrikethrough,
+  FaCode,
+  FaListUl,
+  FaListOl,
+  FaQuoteLeft,
+  FaLink,
+  FaUndo,
+  FaRedo,
+  FaParagraph,
+} from "react-icons/fa";
 
 // All Necessary Extensions.
 const extensions = [StarterKit, Underline, Link];
 const content = ``;
 
-// Using useEditor hook for using the extensions.
 const Tiptap = ({ handleEventContentSave }) => {
   const editor = useEditor({
     extensions,
@@ -42,7 +55,7 @@ const Tiptap = ({ handleEventContentSave }) => {
   return (
     <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 mt-8">
       <div className="mb-4 border-b pb-4">
-        {/* Toolbar with formal button design */}
+        {/* Toolbar with icons */}
         <div className="flex flex-wrap gap-4">
           {/* Bold Font */}
           <button
@@ -52,7 +65,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("bold") ? "bg-gray-300" : ""
             }`}
           >
-            Bold
+            <FaBold />
           </button>
 
           {/* Italic Font */}
@@ -63,7 +76,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("italic") ? "bg-gray-300" : ""
             }`}
           >
-            Italic
+            <FaItalic />
           </button>
 
           {/* Underline button */}
@@ -74,7 +87,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("underline") ? "bg-gray-300" : ""
             }`}
           >
-            Underline
+            <FaUnderline />
           </button>
 
           {/* Strike button */}
@@ -85,7 +98,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("strike") ? "bg-gray-300" : ""
             }`}
           >
-            Strike
+            <FaStrikethrough />
           </button>
 
           {/* Code button */}
@@ -96,7 +109,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("code") ? "bg-gray-300" : ""
             }`}
           >
-            Code
+            <FaCode />
           </button>
 
           {/* Clear Marks button */}
@@ -122,7 +135,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("paragraph") ? "bg-gray-300" : ""
             }`}
           >
-            Paragraph
+            <FaParagraph />
           </button>
 
           {/* Heading buttons */}
@@ -155,7 +168,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("bulletList") ? "bg-gray-300" : ""
             }`}
           >
-            Unordered List
+            <FaListUl />
           </button>
 
           {/* Ordered List button */}
@@ -165,7 +178,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("orderedList") ? "bg-gray-300" : ""
             }`}
           >
-            Ordered List
+            <FaListOl />
           </button>
 
           {/* Code Block button */}
@@ -175,7 +188,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("codeBlock") ? "bg-gray-300" : ""
             }`}
           >
-            Code Block
+            <FaCode />
           </button>
 
           {/* Blockquote button */}
@@ -185,7 +198,7 @@ const Tiptap = ({ handleEventContentSave }) => {
               editor.isActive("blockquote") ? "bg-gray-300" : ""
             }`}
           >
-            Blockquote
+            <FaQuoteLeft />
           </button>
 
           {/* Horizontal Rule button */}
@@ -210,14 +223,14 @@ const Tiptap = ({ handleEventContentSave }) => {
             disabled={!editor.can().chain().focus().undo().run()}
             className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
           >
-            Undo
+            <FaUndo />
           </button>
           <button
             onClick={() => editor.chain().focus().redo().run()}
             disabled={!editor.can().chain().focus().redo().run()}
             className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
           >
-            Redo
+            <FaRedo />
           </button>
 
           {/* Link buttons */}
@@ -225,7 +238,7 @@ const Tiptap = ({ handleEventContentSave }) => {
             onClick={addLink}
             className="px-4 py-2 rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
           >
-            Add Link
+            <FaLink />
           </button>
           <button
             onClick={removeLink}
